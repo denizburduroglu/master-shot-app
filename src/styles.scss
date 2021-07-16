@@ -1,1 +1,13 @@
-/* You can add global styles to this file, and also import other style files */
+// Abstracts
+// Vendors
+/*  
+    Import Foundation for Sites
+    See https://foundation.zurb.com/sites/docs/sass.html for detailed info.
+    Import Angular ngx-foundation Framework Added Styles
+*/
+@import '~foundation-sites/scss/foundation';
+  @include foundation-everything;
+@import "~ngx-foundation/assets/scss/main";
+// Base
+// Pages
+@import './styles/pages/login-page';

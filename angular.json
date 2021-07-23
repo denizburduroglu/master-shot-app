@@ -33,7 +33,9 @@
             "styles": [
               "src/styles.scss"
             ],
-            "scripts": []
+            "scripts": [
+              "node_modules/@okta/okta-signin-widget/dist/js/okta-sign-in.min.js"
+            ]
           },
           "configurations": {
             "production": {
@@ -101,7 +103,9 @@
             "styles": [
               "src/styles.scss"
             ],
-            "scripts": []
+            "scripts": [
+              "node_modules/@okta/okta-signin-widget/dist/js/okta-sign-in.min.js"
+            ]
           }
         }
       }

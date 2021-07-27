@@ -1,8 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { config } from 'src/app/global/okta-config';
 import '@okta/okta-signin-widget/dist/js/okta-sign-in.min';
 import { HttpRequestService } from 'src/app/services/http-request.service';
-import { Router } from '@angular/router';
+import { NavigationStart, Router } from '@angular/router';
 import { OktaAuthService } from '@okta/okta-angular';
 
 declare let OktaSignIn: any;
@@ -11,49 +11,67 @@ declare let OktaSignIn: any;
   selector: 'app-login-page',
   templateUrl: './login-page.component.html'
 })
-export class LoginPageComponent implements OnInit {
-
-  signIn = new OktaSignIn(
+export class LoginPageComponent implements OnInit, OnDestroy {
+  
+  oktaSignIn = new OktaSignIn(
     {
       baseUrl: config.oktaDomain,
-      el: '#osw-container',
+      el: '#okta-signin-container',
       clientId: config.clientId,
       redirectUri: config.redirectUri,
       authParams: {
-        issuer: config.oktaDomain + 'oauth2/default'
+        // pkce: true
+        issuer: config.oktaDomain + '/oauth2/default'
+      },
+      features: {
+        registration: true
       }
     }
   );
+  isAuthenticated: boolean = false;
 
   constructor(
     private httpRequestService: HttpRequestService,
     private oktaAuthService: OktaAuthService,
     private router: Router
-  ) { }
+  ) {}
 
-  ngOnInit(): void {
+  async ngOnInit(): Promise<void> {
+    await this.setupIsAuthenticated();
     this.setupSignIn();
   }
 
-  async setupSignIn() {
-    if(await !this.oktaAuthService.isAuthenticated()) {
-      this.signIn.showSignInToGetTokens().then((tokens: any) => {
-        // Store tokens
-        this.postSignIn();
+  ngOnDestroy(): void {
+    this.oktaSignIn?.remove();
+  }
+
+  async setupIsAuthenticated() {
+    this.oktaAuthService.$authenticationState.subscribe(
+      (isAuthenticated: boolean)  => this.isAuthenticated = isAuthenticated
+    );
+    this.isAuthenticated = await this.oktaAuthService.isAuthenticated();
+  }
+
+  setupSignIn() {
+    if(!this.isAuthenticated) {
+      this.oktaSignIn.showSignInToGetTokens({
+        el: '#okta-signin-container',
+      }).then((tokens: any) => {
+        this.postSignIn(tokens);
       }).catch((error: any) => {
-        // Handle error
         console.error("Error: ", error.message);
       });
     } else {
-      this.postSignIn();
+      this.router.navigateByUrl("/home");
     }
   }
 
-  postSignIn() : void {
-    
-    // tokens.accessToken
-    // tokens.tokenType
-    // tokens.expiresAt
-    this.router.navigate(["/home"]);
+  postSignIn(tokens: any) : void {
+    console.log(tokens);
+    this.oktaAuthService.tokenManager.setTokens(tokens);
+    this.oktaSignIn.hide();
+    this.router.navigateByUrl("/home");
   }
+
+
 }

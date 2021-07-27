@@ -1,6 +1,6 @@
 export const config = {
     clientId: '0oa1b5s9ecpAG47I25d7',
-    oktaDomain: 'https://dev-92651581.okta.com/',
+    oktaDomain: 'https://dev-92651581.okta.com',
     redirectUri: 'http://localhost:4200/login/callback',
     scopes: ['openid', 'profile', 'email'],
     pkce: true,

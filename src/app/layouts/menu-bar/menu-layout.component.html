@@ -1,0 +1,37 @@
+<div class="off-canvas-wrapper">
+    <!-- Canvas Left -->
+    <div [offcanvas]="isOffcanvas"
+      class="off-canvas position-left"
+      id="offCanvasMenuLeft"
+      aria-hidden="true"
+      #offcanvasLeft="bs-offcanvas">
+      <ul class="menu vertical">
+        <li class="main-title">Master Shot</li>
+        <li routerLinkActive="active"
+        [routerLinkActiveOptions]="{ exact: true }">
+          <a routerLink="/menu/home" (click)="offcanvasLeft.hide()">Home</a>
+        </li>
+        <li routerLinkActive="active"
+        [routerLinkActiveOptions]="{ exact: true }">
+          <a routerLink="/menu/profile" (click)="offcanvasLeft.hide()">Profile</a>
+        </li>
+      </ul>
+      <button class="close-button" aria-label="Close Menu" aria-controls="offCanvasMenu" type="button" (click)="offcanvasLeft.hide()">
+        <span aria-hidden="true">×</span>
+      </button>
+    </div>
+    <!-- Top menu bar -->
+    <div class="off-canvas-content">
+      <div class="title-bar">
+        <div class="title-bar-left">
+          <button class="menu-icon" type="button" 
+          [attr.aria-expanded]="!isOffcanvas"
+          aria-controls="offCanvasMenuLeft"
+          (click)="offcanvasLeft.show()"></button>
+          <span class="title-bar-title">Master Shot</span>
+        </div>
+      </div>
+    </div>
+    <!-- Page content here -->
+    <router-outlet></router-outlet>
+</div>

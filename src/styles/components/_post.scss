@@ -1,0 +1,24 @@
+.post-image-cropper {
+    object-fit: cover;
+    border-radius: 50%;
+    height: 6rem;
+    width: 6rem;
+    @include breakpoint(large down) {
+        height: 5rem;
+        width: 5rem;
+    }
+    @include breakpoint(small down) {
+        height: 4rem;
+        width: 4rem;
+    }
+}
+
+.post-card-container {
+    width: 60%;
+    @include breakpoint(large down) {
+        width: 80%;
+    }
+    @include breakpoint(small down) {
+        width: 100%;
+    }
+}

@@ -10,12 +10,16 @@ import { HttpClientModule } from '@angular/common/http';
 import { ProfilePageComponent } from './pages/profile-page/profile-page.component';
 import { OktaAuthModule, OKTA_CONFIG } from '@okta/okta-angular';
 import { config } from './global/okta-config';
+import { MenuLayoutComponent } from './layouts/menu-bar/menu-layout.component';
+import { PostComponent } from './components/post/post.component';
 @NgModule({
   declarations: [
     AppComponent,
     LoginPageComponent,
     HomePageComponent,
-    ProfilePageComponent
+    ProfilePageComponent,
+    MenuLayoutComponent,
+    PostComponent
   ],
   imports: [
     BrowserModule,

@@ -1,4 +1,5 @@
 // Abstracts
+@import './styles/abstracts/mixins';
 // Vendors
 /*  
     Import Foundation for Sites
@@ -6,8 +7,16 @@
     Import Angular ngx-foundation Framework Added Styles
 */
 @import '~foundation-sites/scss/foundation';
-  @include foundation-everything;
+  @include foundation-everything($prototype: true);
+  
 @import "~ngx-foundation/assets/scss/main";
+@import './assets/icons/foundation-icons/foundation-icons.css';
+@import './styles/vendors/foundation.icons';
+
 // Base
+// Layouts
+@import './styles/layouts/menu-layout';
+// Components
+@import './styles/components/post';
 // Pages
 @import './styles/pages/login-page';

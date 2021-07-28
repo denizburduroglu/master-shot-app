@@ -62,7 +62,7 @@ export class LoginPageComponent implements OnInit, OnDestroy {
         console.error("Error: ", error.message);
       });
     } else {
-      this.router.navigateByUrl("/home");
+      this.router.navigateByUrl("/menu/home");
     }
   }
 
@@ -70,8 +70,6 @@ export class LoginPageComponent implements OnInit, OnDestroy {
     console.log(tokens);
     this.oktaAuthService.tokenManager.setTokens(tokens);
     this.oktaSignIn.hide();
-    this.router.navigateByUrl("/home");
+    this.router.navigateByUrl("/menu/home");
   }
-
-
 }

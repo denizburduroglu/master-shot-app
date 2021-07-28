@@ -1,0 +1,23 @@
+.login-page-background {
+    
+}
+
+.login-page-okta-form-container {
+    position: absolute;
+    
+    // Large and above
+    width: 40rem;
+    @include breakpoint(large down) {
+        width: 30rem;
+    }
+    @include breakpoint(small down) {
+        width: 100%;
+    }
+
+    // Center the div
+    top: 0;
+    left: 0; 
+    right: 0; 
+    margin-left: auto; 
+    margin-right: auto; 
+}

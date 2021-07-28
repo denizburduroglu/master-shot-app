@@ -10,6 +10,8 @@ import { HttpRequestService } from 'src/app/services/http-request.service';
 })
 export class HomePageComponent implements OnInit {
 
+  isOffcanvas : boolean = true;
+  weatherForecast : string = '';
   constructor(
     private httpRequestService: HttpRequestService,
     private oktaAuthService: OktaAuthService,
@@ -22,7 +24,7 @@ export class HomePageComponent implements OnInit {
 
   getWeather() {
     this.httpRequestService.httpGet(APP_CONFIG.API_ENDPOINTS.WEATHER_FORECAST).subscribe((success) => {
-      console.log(success);
+      this.weatherForecast = JSON.stringify(success);
     }, (error) => {
       console.error(error);
     });

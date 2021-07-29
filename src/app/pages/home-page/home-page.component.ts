@@ -10,8 +10,9 @@ import { HttpRequestService } from 'src/app/services/http-request.service';
 })
 export class HomePageComponent implements OnInit {
 
-  isOffcanvas : boolean = true;
-  weatherForecast : string = '';
+  dismissible = true;
+  weatherAlert: any = null;
+
   constructor(
     private httpRequestService: HttpRequestService,
     private oktaAuthService: OktaAuthService,
@@ -24,14 +25,17 @@ export class HomePageComponent implements OnInit {
 
   getWeather() {
     this.httpRequestService.httpGet(APP_CONFIG.API_ENDPOINTS.WEATHER_FORECAST).subscribe((success) => {
-      this.weatherForecast = JSON.stringify(success);
+      this.weatherAlert = {
+        type: 'success',
+        title: 'Success!',
+        msg: JSON.stringify(success)
+      }
     }, (error) => {
-      console.error(error);
+      this.weatherAlert = {
+        type: 'alert',
+        title: 'Error: ',
+        msg: error?.statusText
+      }
     });
-  }
-
-  async logout() {
-    await this.oktaAuthService.signOut();
-    this.router.navigateByUrl('/login');
   }
 }

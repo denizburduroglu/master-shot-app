@@ -1,12 +1,11 @@
 <h1>home-page works!</h1>
-<div *ngIf="weatherForecast" class="callout success">
-    <h5>Todays weather is...</h5>
-    <p>{{ weatherForecast }}</p>
-    <button class="close-button" aria-label="Dismiss alert" type="button" (click)="weatherForecast=''">
+<div *ngIf="weatherAlert" class="callout" [ngClass]="weatherAlert.type">
+    <h5><b>{{ weatherAlert.title }}</b></h5>
+    <p>{{ weatherAlert.msg }}</p>
+    <button class="close-button" aria-label="Dismiss alert" type="button" (click)="weatherAlert = null">
         <span aria-hidden="true">&times;</span>
     </button>
 </div>
 <div class="cell small-4"><input type="button" value="Get Weather" class="button primary" (click)="getWeather()"></div>
-<div class="cell small-4"><input type="button" value="Logout" class="button primary" (click)="logout()"></div>
 
 <app-post></app-post>

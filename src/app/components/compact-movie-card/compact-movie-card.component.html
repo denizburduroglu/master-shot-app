@@ -1,0 +1,20 @@
+<div class="compact-movie-card-container">
+    <div class="grid-x card">
+        <app-movie-poster class="cell small-5" [poster]="(movie)? movie.Poster : 'N/A'"></app-movie-poster>
+        <div class="cell small-6 padding-1">
+          <p>{{ movie?.Director }}</p>
+          <h3>{{ movie?.Title }}</h3>
+        </div>
+        <div class="cell small-1">
+            <div style="background-color: #202020;">
+                <div class="rotation-wrapper-outer">
+                    <div class="rotation-wrapper-inner">
+                        <div class="cell card year-card element-to-rotate">
+                            <p>{{ movie?.Year }}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

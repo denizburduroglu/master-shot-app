@@ -1,34 +1,9 @@
 .profile-page-top-header-background {
     width: 100%;
-    height: 20rem;
+    height: 15rem;
     object-fit: cover;
     filter: blur(3px);
     -webkit-filter: blur(3px);
-}
-
-.profile-page-movie-review-card {
-    float: right; 
-    width: 40rem;
-    .card {
-        flex-direction: row;
-        .cell {
-            background-color: #333533;
-        }
-        p {
-            color: #ffd100;
-        }
-        h3 {
-            color: #fcfcfc;
-        }
-        .year-card {
-            background-color: #202020;
-            border-color: #202020;
-            p {
-                // text-align: center;
-                color:#fcfcfc;
-            }
-        }
-    }
 }
 
 .rotation-wrapper-outer {

@@ -1,0 +1,7 @@
+<div class="movie-poster-container">
+    <div *ngIf="poster == 'N/A'" class="no-image-container grid-y align-center">
+        <i class="fi-no-dogs size-60 grid-x align-center"></i>
+        <p class="grid-x align-center" style="color: white;">No Image Found</p>
+    </div>
+    <img *ngIf="poster != 'N/A'" [src]="poster">
+</div>

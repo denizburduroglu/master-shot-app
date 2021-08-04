@@ -1,12 +1,13 @@
 <div class="card" style="top: 5rem; margin-left: 3rem; width: 20rem; height: 40rem; position: fixed; z-index: 1;">
     <img src="assets/images/the-matrix.jpg" style="height: 23rem; object-fit: cover;">
     <div class="grid-y" style="height: 17rem;">
-        <h4 class="cell small-2 margin-0"><b>About</b></h4>
+        <h5 class="cell small-2 margin-0 grid-y align-center">{{ userInformation?.email }}</h5>
+        <p class="cell small-1 margin-0"><b>About</b></p>
         <p class="cell small-3 margin-0" style="overflow: hidden;">Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatur, repellat accusamus aut distinctio cum minus debitis harum in. Assumenda tempore accusantium voluptate alias repudiandae quidem odit non, consectetur, eveniet culpa aut debitis quam praesentium eligendi ab laudantium totam maxime. Ullam repellendus, libero quia delectus blanditiis sed ducimus veniam omnis dolor!</p>
         <div class="cell small-3 grid-y align-center">
             <input style="width: 100%;" type="button" value="Read more" class="button primary margin-0">
         </div>
-        <span class="cell small-4 grid-y align-center">
+        <span class="cell small-2 grid-y align-center">
             <div class="grid-x align-center">
                 <i class="fi-star size-24 padding-horizontal-1"></i>
                 <i class="fi-star size-24 padding-horizontal-1"></i>
@@ -20,21 +21,6 @@
 <img src="assets/images/the-matrix.jpg" class="margin-bottom-3 profile-page-top-header-background">
     
 <!-- Movie Review Feed -->
-<div class="profile-page-movie-review-card">
-    <div class="grid-x card">
-        <img class="cell small-5" src="assets/images/login-background.jpg">
-        <div class="cell small-6 padding-1">
-          <p>Lana Wachowski, Lilly Wachowski</p>
-          <h3>The Matrix</h3>
-        </div>
-        <div class="cell small-1">
-            <div class="rotation-wrapper-outer">
-                <div class="rotation-wrapper-inner">
-                    <div class="cell card year-card element-to-rotate">
-                        <p>1995</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+<div class="grid-y" style="padding-left: 23rem;">
+    <app-compact-movie-card class="padding-horizontal-2 padding-vertical-1"></app-compact-movie-card>
 </div>

@@ -1,0 +1,45 @@
+<!-- Display Selected Movie -->
+<div class="padding-2">
+  <div *ngIf="selectedMovie" class="grid-x align-center">
+      <app-compact-movie-card class="cell small-12 medium-8" [movie]="selectedMovie"></app-compact-movie-card>
+  </div>
+</div>
+
+<!-- Post Form -->
+<div [formGroup]="createPostFormGroup" class="padding-2">
+    <input placeholder="Title" type="text" formControlName="title">
+    <textarea placeholder="Details" formControlName="details" rows="5" ></textarea>
+    <button class="button primary" (click)="openSearchMovieModal(searchMovieModal)">Add Movie</button>
+    <button class="button primary" (click)="submitPostFormGroup()" style="float: right;">Post Review</button>
+</div>
+
+<!-- Modal -->
+<ng-template #searchMovieModal [formGroup]="movieSearchFormGroup">
+    <h4>Search movie by title</h4>
+    <button class="close-button" (click)="modalRef.hide()" aria-label="Close modal" type="button">
+      <span aria-hidden="true">&times;</span>
+    </button>
+    <hr>
+    <input formControlName="title" type="text" name="movieTitle" id="movieTitle" placeholder="Movie Title">
+    <button class="button small primary float-right" (click)="searchMovie()" type="button">Search</button>
+    <table>
+        <thead>
+          <tr>
+            <th>Poster</th>
+            <th>Title</th>
+            <th>Year</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let movie of moviesArray;">
+            <td>
+              <app-movie-poster [poster]="movie.Poster"></app-movie-poster>
+            </td>
+            <td>{{ movie.Title }}</td>
+            <td>{{ movie.Year }}</td>
+            <td><button class="button primary" (click)="addMovieToCreatePost(movie)">Select</button></td>
+          </tr>
+        </tbody>
+      </table>
+</ng-template>

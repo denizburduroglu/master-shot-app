@@ -12,6 +12,9 @@ import { OktaAuthModule, OKTA_CONFIG } from '@okta/okta-angular';
 import { config } from './global/okta-config';
 import { MenuLayoutComponent } from './layouts/menu-bar/menu-layout.component';
 import { PostComponent } from './components/post/post.component';
+import { CreatePostComponent } from './pages/create-post/create-post.component';
+import { MoviePosterComponent } from './components/movie-poster/movie-poster.component';
+import { CompactMovieCardComponent } from './components/compact-movie-card/compact-movie-card.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -19,7 +22,10 @@ import { PostComponent } from './components/post/post.component';
     HomePageComponent,
     ProfilePageComponent,
     MenuLayoutComponent,
-    PostComponent
+    PostComponent,
+    CreatePostComponent,
+    MoviePosterComponent,
+    CompactMovieCardComponent
   ],
   imports: [
     BrowserModule,

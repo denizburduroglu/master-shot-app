@@ -1,0 +1,16 @@
+.movie-poster-container{   
+    img {
+        width: 300px; 
+        height: 450px; 
+        background-color: #0a0a0a; 
+        object-fit: contain;
+    }
+    .no-image-container {
+        width: 300px; 
+        height: 450px; 
+        background-color: #0a0a0a; 
+        i {
+            color: white;
+        }
+    }
+}

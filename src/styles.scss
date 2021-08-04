@@ -18,6 +18,9 @@
 @import './styles/layouts/menu-layout';
 // Components
 @import './styles/components/post';
+@import './styles/components/movie-poster';
+@import './styles/components/compact-movie-card';
 // Pages
+@import './styles/pages/create-post';
 @import './styles/pages/login-page';
-@import './styles/pages/profile';
+@import './styles/pages/profile-page';

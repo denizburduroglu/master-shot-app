@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { AlertConfig, AlertModule, BsDatepickerModule, BsDropdownModule, ButtonsModule, CarouselModule, ModalModule, OffcanvasModule, PaginationModule, ProgressbarModule, RatingModule, SortableModule, TabsModule } from 'ngx-foundation';
+import { AlertConfig, AlertModule, BsDatepickerModule, BsDropdownModule, BsModalService, ButtonsModule, CarouselModule, ComponentLoaderFactory, ModalModule, OffcanvasModule, PaginationModule, PositioningService, ProgressbarModule, RatingModule, SortableModule, TabsModule } from 'ngx-foundation';
 
 
 @NgModule({
@@ -32,7 +32,10 @@ import { AlertConfig, AlertModule, BsDatepickerModule, BsDropdownModule, Buttons
     OffcanvasModule
   ],
   providers: [
-    AlertConfig
+    AlertConfig,
+    BsModalService,
+    ComponentLoaderFactory,
+    PositioningService
   ]
 })
 export class FoundationModule { }

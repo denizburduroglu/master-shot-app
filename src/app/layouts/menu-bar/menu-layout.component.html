@@ -13,6 +13,10 @@
         </li>
         <li routerLinkActive="active"
         [routerLinkActiveOptions]="{ exact: true }">
+          <a routerLink="/menu/create-post" (click)="offcanvasLeft.hide()">Create Post</a>
+        </li>
+        <li routerLinkActive="active"
+        [routerLinkActiveOptions]="{ exact: true }">
           <a routerLink="/menu/profile" (click)="offcanvasLeft.hide()">Profile</a>
         </li>
         <li routerLinkActive="active"

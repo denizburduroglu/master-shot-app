@@ -1,0 +1,23 @@
+.compact-movie-card-container {
+    align-self: center;
+    .card {
+        flex-direction: row;
+        .cell {
+            background-color: #333533;
+        }
+        p {
+            color: #ffd100;
+        }
+        h3 {
+            color: #fcfcfc;
+        }
+        .year-card {
+            background-color: #202020;
+            border-color: #202020;
+            p {
+                // text-align: center;
+                color:#fcfcfc;
+            }
+        }
+    }
+}

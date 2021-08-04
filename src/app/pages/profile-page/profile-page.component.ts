@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
+import { OktaAuthService } from '@okta/okta-angular';
 
 @Component({
   selector: 'app-profile-page',
@@ -7,8 +8,21 @@ import { FormControl, FormGroup } from '@angular/forms';
 })
 export class ProfilePageComponent implements OnInit {
 
-  constructor() { }
+  userInformation: any = {
+
+  };
+
+  constructor(
+    private oktaAuthService: OktaAuthService
+  ) { }
 
   ngOnInit(): void {
+    this.setupUserInformation();
+  }
+
+  setupUserInformation() {
+    this.oktaAuthService.getUser().then((success) => {
+      this.userInformation['email'] = success.email;
+    });
   }
 }

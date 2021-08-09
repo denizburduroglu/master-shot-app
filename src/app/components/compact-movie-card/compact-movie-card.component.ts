@@ -1,5 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { FullMovie, Movie } from 'src/app/services/omdb-movies.service';
+import { take, tap } from 'rxjs/operators';
+import { FullMovie, Movie, OmdbMoviesService } from 'src/app/services/omdb-movies.service';
+import { Post, PostService } from 'src/app/services/post.service';
 
 @Component({
   selector: 'app-compact-movie-card',
@@ -7,7 +9,7 @@ import { FullMovie, Movie } from 'src/app/services/omdb-movies.service';
 })
 export class CompactMovieCardComponent implements OnInit {
 
-  @Input() movie : FullMovie = {
+  @Input() movie : FullMovie | undefined = {
     "Title": '',
     "Year": '',
     "Rated": '',
@@ -35,9 +37,17 @@ export class CompactMovieCardComponent implements OnInit {
     "Response": '',
   };
 
+  @Input() post : Post = {
+    "dateCreated" : null,
+    "dateModified" : null,
+    "title": '',
+    "details": '',
+    "imdbID": '',
+    "userEmail": '',
+  }
+
   constructor() { }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
 }

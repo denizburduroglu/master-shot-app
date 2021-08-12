@@ -1,7 +1,7 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { take, tap } from 'rxjs/operators';
-import { FullMovie, Movie, OmdbMoviesService } from 'src/app/services/omdb-movies.service';
-import { Post, PostService } from 'src/app/services/post.service';
+import { ChangeDetectorRef, Component, ElementRef, Input, OnInit, ViewChild} from '@angular/core';
+import { FullMovie } from 'src/app/services/omdb-movies.service';
+import { Post } from 'src/app/services/post.service';
+import * as _ from 'lodash';
 
 @Component({
   selector: 'app-compact-movie-card',
@@ -37,7 +37,7 @@ export class CompactMovieCardComponent implements OnInit {
     "Response": '',
   };
 
-  @Input() post : Post = {
+  @Input() post : Post | undefined = {
     "dateCreated" : null,
     "dateModified" : null,
     "title": '',
@@ -46,8 +46,39 @@ export class CompactMovieCardComponent implements OnInit {
     "userEmail": '',
   }
 
-  constructor() { }
+  id = _.uniqueId();
+  isShowReadMore = false;
+  constructor(
+    private changeDetectorRef: ChangeDetectorRef
+  ) {}
 
   ngOnInit(): void {}
+
+  ngAfterViewInit() { 
+    // For user post
+    if(document.getElementById(this.id)){
+      document.getElementById(this.id)?.classList.add('auto');
+      
+      let clientHeight = document.getElementById(this.id)?.clientHeight ?? 0;
+      let scrollHeight = document.getElementById(this.id)?.scrollHeight ?? 0;
+      if(clientHeight < scrollHeight) {
+        document.getElementById(this.id)?.classList.add('user-post-overflow');
+        this.isShowReadMore = true;
+        this.changeDetectorRef.detectChanges();
+      }
+    }
+    
+  }
+
+  expandUserPost() {
+    if(document.getElementById(this.id)?.classList.contains('show-user-post-overflow')) {
+      document.getElementById(this.id)?.classList.remove('show-user-post-overflow')
+      document.getElementById(this.id)?.classList.add('auto')
+    } else {
+      document.getElementById(this.id)?.classList.remove('auto')
+      document.getElementById(this.id)?.classList.add('show-user-post-overflow')
+    } 
+    this.changeDetectorRef.detectChanges();
+  }
 
 }

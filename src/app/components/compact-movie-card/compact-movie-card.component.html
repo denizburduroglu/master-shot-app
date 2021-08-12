@@ -1,9 +1,16 @@
 <div class="compact-movie-card-container">
     <div class="grid-x card">
         <app-movie-poster class="cell small-5" [poster]="(movie)? movie.Poster : 'N/A'"></app-movie-poster>
-        <div class="cell small-6 padding-1">
-          <p>{{ movie?.Director }}</p>
-          <h3>{{ movie?.Title }}</h3>
+        <div class="cell small-6 padding-1 grid-y">
+          <div class="cell shrink" style="text-align: center;">
+              <h4>{{ movie?.Director }}</h4>
+              <h3>{{ movie?.Title }}</h3>
+          </div>
+          <div class="cell padding-top-2" [id]="id">
+              <h4 style="color: #ffd100;">{{ post?.title }}</h4>
+              <p>{{ post?.details }}</p>
+          </div>
+          <a class="clear button success" style="align-self: flex-end;" *ngIf="isShowReadMore" (click)="expandUserPost()">Read More ></a>
         </div>
         <div class="cell small-1">
             <div style="background-color: #202020;">

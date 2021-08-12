@@ -23,6 +23,6 @@
 <!-- Movie Review Feed -->
 <div class="grid-y" style="padding-left: 23rem;">
     <div *ngFor="let userPost of userPosts" class="grid-x align-center">
-        <app-compact-movie-card [movie]="userPost?.fullMovie" class="padding-horizontal-2 padding-vertical-1 profile-page-compact-movie"></app-compact-movie-card>
+        <app-compact-movie-card [post]="userPost?.post" [movie]="userPost?.fullMovie" class="padding-horizontal-2 padding-vertical-1 profile-page-compact-movie"></app-compact-movie-card>
     </div>
 </div>

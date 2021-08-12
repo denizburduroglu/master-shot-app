@@ -15,6 +15,7 @@ import { PostComponent } from './components/post/post.component';
 import { CreatePostComponent } from './pages/create-post/create-post.component';
 import { MoviePosterComponent } from './components/movie-poster/movie-poster.component';
 import { CompactMovieCardComponent } from './components/compact-movie-card/compact-movie-card.component';
+import { SeeMoreDirective } from './directives/see-more.directive';
 @NgModule({
   declarations: [
     AppComponent,
@@ -25,7 +26,8 @@ import { CompactMovieCardComponent } from './components/compact-movie-card/compa
     PostComponent,
     CreatePostComponent,
     MoviePosterComponent,
-    CompactMovieCardComponent
+    CompactMovieCardComponent,
+    SeeMoreDirective
   ],
   imports: [
     BrowserModule,

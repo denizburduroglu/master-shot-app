@@ -5,10 +5,10 @@
         .cell {
             background-color: #333533;
         }
-        p {
+        p, h5 {
             color: #ffd100;
         }
-        h3 {
+        h3, h4 {
             color: #fcfcfc;
         }
         .year-card {
@@ -20,4 +20,14 @@
             }
         }
     }
+}
+
+.user-post-overflow {
+    overflow: hidden;
+    // background-color: yellowgreen !important;
+}
+
+.show-user-post-overflow {
+    max-height: none !important;
+    overflow: none !important;
 }
